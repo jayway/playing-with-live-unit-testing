@@ -6,7 +6,7 @@ namespace ConsoleApp1
     {
         public static bool WasYesterDay(DateTime date)
         {
-            return (DateTime.Today - date).Days == 1;
+            return (DateTime.Today - date.Date).Days == 1;
         }
     }
 }
