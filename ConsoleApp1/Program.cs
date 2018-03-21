@@ -6,10 +6,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a date");
-            DateTime.TryParse(Console.ReadLine(), out var date);
-            Console.WriteLine($"WasYesterDay returned {(DateTime.Today - date).Days == 1}");
-            Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Enter a date");
+                DateTime.TryParse(Console.ReadLine(), out var date);
+                Console.WriteLine($"WasYesterDay returned {DateService.WasYesterDay(date)}");
+            }
         }
     }
 }
