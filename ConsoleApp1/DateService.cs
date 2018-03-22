@@ -4,9 +4,16 @@ namespace ConsoleApp1
 {
     public class DateService
     {
-        public static bool WasYesterDay(DateTime date, DateTime now)
+        private readonly IClockService _clockService;
+
+        public DateService(IClockService clockService)
         {
-            return (now.Date - date.Date).Days == 1;
+            _clockService = clockService;
+        }
+
+        public bool WasYesterDay(DateTime date)
+        {
+            return (_clockService.Now.Date - date.Date).Days == 1;
         }
     }
 }

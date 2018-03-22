@@ -1,33 +1,36 @@
 using System;
 using ConsoleApp1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Pose;
-using Shim = Pose.Shim;
 
 namespace UnitTestProject1
 {
+    class ClockServiceForTesting : IClockService
+    {
+        public DateTime Now => new DateTime(2018, 3, 21);
+    }
+
     [TestClass]
     public class UnitTest1
     {
-        private DateTime _now;
+        private DateService _dateService;
 
         [TestInitialize]
         public void Setup()
         {
-            _now = new DateTime(2018, 3, 21);
+            _dateService = new DateService(new ClockServiceForTesting());
         }
 
         [TestMethod]
         public void TestYesterday()
         {
-            Assert.IsTrue(DateService.WasYesterDay(new DateTime(2018, 3, 20), _now));
+            Assert.IsTrue(_dateService.WasYesterDay(new DateTime(2018, 3, 20)));
         }
 
         [TestMethod]
         public void TestYesterdayEvening()
         {
             
-            Assert.IsTrue(DateService.WasYesterDay(new DateTime(2018, 3, 20, 23, 0, 0), _now));
+            Assert.IsTrue(_dateService.WasYesterDay(new DateTime(2018, 3, 20, 23, 0, 0)));
         }
     }
 }
