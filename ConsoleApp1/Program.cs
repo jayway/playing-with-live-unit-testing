@@ -7,13 +7,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            //var serviceProvider = new ServiceCollection()
-            //    .AddSingleton<IClockService, ClockService>()
-            //    .AddSingleton<DateService>()
-            //    .BuildServiceProvider();
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IClockService, ClockService>()
+                .AddSingleton<DateService>()
+                .BuildServiceProvider();
 
-            //var dateService = serviceProvider.GetService<DateService>();
-            var dateService = new DateService(new ClockService());
+            var dateService = serviceProvider.GetService<DateService>();
 
             while (true)
             {
