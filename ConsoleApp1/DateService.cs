@@ -4,9 +4,9 @@ namespace ConsoleApp1
 {
     public class DateService
     {
-        public static bool WasYesterDay(DateTime date)
+        public static bool WasYesterDay(DateTime date, DateTime now)
         {
-            return (DateTime.Today - date.Date).Days == 1;
+            return (now.Date - date.Date).Days == 1;
         }
     }
 }

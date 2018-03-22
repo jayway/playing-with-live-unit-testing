@@ -10,7 +10,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Enter a date");
                 DateTime.TryParse(Console.ReadLine(), out var date);
-                Console.WriteLine($"WasYesterDay returned {DateService.WasYesterDay(date)}");
+                Console.WriteLine($"WasYesterDay returned {DateService.WasYesterDay(date, DateTime.Now)}");
             }
         }
     }
